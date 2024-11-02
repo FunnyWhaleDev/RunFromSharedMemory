@@ -1,7 +1,7 @@
 # RunFromSharedMemory
 Thread hijacking with runnig from shared memory
 
-![res](https://github.com/FunnyWhaleDev/HttpRequestConstructor/blob/main/res.gif)
+![res](https://github.com/FunnyWhaleDev/RunFromSharedMemory/blob/main/res.gif)
 
 Research - https://habr.com/ru/articles/855710/
 
